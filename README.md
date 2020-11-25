@@ -1,16 +1,10 @@
 # Dynamic Theming
 
-<img src="./screenshots/default.png" alt="Default" style="width:200px;height:355px;">
-<img src="./screenshots/red.png" alt="Red" style="width:200px;height:355px;">
-<img src="./screenshots/green.png" alt="Green" style="width:200px;height:355px;">
-<img src="./screenshots/yellow.png" alt="Yellow" style="width:200px;height:355px;">.
-
-### Note:  
+### Note:
 
 - This particular implementation utilizes SharedPreferences. There are other solutions implementing using Bundle and Intents etc.
 - If you wish to change the theme of an already existing activity, call recreate() after setTheme()
 - Don't call recreate() if you change theme in onCreate(), to avoid infinite loop.
-
 
 My Implementation:
 
@@ -63,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
 
 ```
 
-- recreate() only restarts the current activity. Previous activities in the back stack will not have the new theme applied to them.One solution would be to recreate the task stack completely.An example:  
+- recreate() only restarts the current activity. Previous activities in the back stack will not have the new theme applied to them.One solution would be to recreate the task stack completely.An example:
 
 ```java
 TaskStackBuilder.create(getActivity())
@@ -71,3 +65,10 @@ TaskStackBuilder.create(getActivity())
             .addNextIntent(getActivity().getIntent())
             .startActivities();
 ```
+
+### Screenshots
+
+<img src="./screenshots/default.png" alt="Default" style="width:100px;height:177px;">
+<img src="./screenshots/red.png" alt="Red" style="width:100px;height:177px;">
+<img src="./screenshots/green.png" alt="Green" style="width:100px;height:177px;">
+<img src="./screenshots/yellow.png" alt="Yellow" style="width:100px;height:177px;">.
