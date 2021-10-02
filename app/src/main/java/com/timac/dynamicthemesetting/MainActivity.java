@@ -6,7 +6,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.view.View;
-import android.widget.Toast;
+// import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -20,14 +20,19 @@ public class MainActivity extends AppCompatActivity {
     public void settingTheme() {
         SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(this);
         String themeName = pref.getString("prefTheme", "Default");
-        if (themeName.equals("Default")) {
-            setTheme(R.style.Theme_DynamicThemeSetting);
-        } else if (themeName.equals("Red")) {
-            setTheme(R.style.RedTheme);
-        } else if (themeName.equals("Green")) {
-            setTheme(R.style.GreenTheme);
-        } else if (themeName.equals("Yellow")) {
-            setTheme(R.style.YellowTheme);
+        switch (themeName) {
+            case "Default":
+                setTheme(R.style.Theme_DynamicThemeSetting);
+                break;
+            case "Red":
+                setTheme(R.style.RedTheme);
+                break;
+            case "Green":
+                setTheme(R.style.GreenTheme);
+                break;
+            case "Yellow":
+                setTheme(R.style.YellowTheme);
+                break;
         }
     }
 
@@ -47,6 +52,7 @@ public class MainActivity extends AppCompatActivity {
         }
         editor.apply();
         settingTheme();
-        MainActivity.this.recreate();
+        MainActivity.this.finish();
+        MainActivity.this.startActivity(getIntent());
     }
 }
